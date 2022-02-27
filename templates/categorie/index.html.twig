@@ -1,0 +1,29 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Categorie List{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.nom }}</td>
+                <td>
+                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}" class="btn btn-primary">Edit</a>
+                    <a href="{{ path('categorie_delete', {'id': categorie.id}) }}" class="btn btn-danger">Delete</a>
+
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Evénement disponibles </h1>
+              <span class="color-text-a">Grille des événements</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Property Grid ======= -->
+  
+    <section class="property-grid grid">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="grid-option">
+              <form>
+                <select class="custom-select">
+                  <option selected>All</option>
+                  <option value="1">New to Old</option>
+                  <option value="2">For Rent</option>
+                  <option value="3">For Sale</option>
+                </select>
+              </form>
+            </div>
+          </div>
+    {% for event in events %}
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="card-img-d">
+                        <img src="{{ asset('Upload/')}}{{ event.image }}" alt="" class="img-d img-fluid">
+                    </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                              {{event.nom}}
+                        <br /> {{event.location}}</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">{{event.prix}}</span>
+                    </div>
+                    <a href="{{ path('event_single_show', {'id': event.id}) }}" class="link-a">Click here to view
+                      <span class="bi bi-chevron-right"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">place disponibles</h4>
+                        <span>{{event.nbrPrt}}
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">participants</h4>
+                        <span>{{event.nbrPlace}}</span>
+                      </li>
+          
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    {% endfor %}
+          
+        </div>
+      </div>
+    </section>
+  
+{% endblock %}
+  

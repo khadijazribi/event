@@ -1,0 +1,41 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Reservations{% endblock %}
+
+{% block body %}
+    <h1>Liste des Reservations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id evenement</th>
+                <th>Id user</th>
+                <th>Transport</th>
+                <th>Nourriture</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.event.id }}</td>
+                <td>{{ reservation.user.id }}</td>
+                <td>{{ reservation.transport ? 'Yes' : 'No' }}</td>
+                <td>{{ reservation.nourriture ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('reservation_admin_show', {'id': reservation.id}) }}" class="btn btn-primary" >show</a>
+                    <a href="{{ path('reservation_admin_edit', {'id': reservation.id}) }}" class="btn btn-primary">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reservation_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'back.html.twig' %}
+
+
+{% block body %}
+    <h1>la liste des randonnées </h1><br><br><br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Localisation</th>
+                <th>DateDeb</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for camping in campings %}
+            <tr>
+                <td>{{ camping.nom }}</td>
+                <td>{{ camping.prix }}</td>
+                <td>{{ camping.localisation }}</td>
+                <td>{{ camping.dateDeb ? camping.dateDeb|date('Y-m-d') : '' }}</td>
+                <td><img src="{{ asset('Upload/')}}{{ camping.image }}" width="100"  /></td>
+                <td>
+                    <a href="{{ path('camping_edit', {'id': camping.id}) }}" class="btn btn-primary">Edit</a>
+                    <a href="{{ path('camping_delete', {'id': camping.id}) }}" class="btn btn-danger">Delete</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

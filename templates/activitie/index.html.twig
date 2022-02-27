@@ -1,0 +1,30 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}la listes des activites {% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activitie in activities %}
+            <tr>
+                <td>{{ activitie.nom }}</td>
+                <td>{{ activitie.description }}</td>
+                <td>
+                    <a href="{{ path('activitie_delete', {'id': activitie.id}) }}"class="btn btn-danger">Delete</a>
+                      
+                    <a href="{{ path('activitie_edit', {'id': activitie.id}) }}"class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

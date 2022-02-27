@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">{{ event.nom }}</h1>
+              <span class="color-text-a">{{ event.location }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>    
+<section class="agent-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card-img-d">
+                        <img src="{{ asset('Upload/')}}{{ event.image }}" alt="" class="img-d img-fluid">
+                    </div>
+              </div>
+              <div class="col-md-5 section-md-t3">
+                <div class="agent-info-box">
+                  <div class="agent-title">
+                    <div class="title-box-d">
+                      <h3 class="title-d">{{ event.nom }}
+                        
+                      </h3>
+                    </div>
+                  </div>
+                  <div class="agent-content mb-3">
+                    <p class="content-d color-text-a">
+                      {{ event.description }}
+                    </p>
+                    <div class="info-agents color-a">
+                      <p>
+                        <strong>Date de depart </strong>
+                        <span class="color-text-a"> {{ event.dateDep ? event.dateDep|date('Y-m-d H:i:s') : '' }}</span>
+                      </p>
+                      <p>
+                        <strong>Date d'arrivé </strong>
+                        <span class="color-text-a"> {{ event.dateRet ? event.dateRet|date('Y-m-d H:i:s') : '' }}</span>
+                      </p>
+                      <p>
+                        <strong>Location </strong>
+                        <span class="color-text-a"> {{ event.location }}</span>
+                      </p>
+                      <p>
+                        <strong>Prix </strong>
+                        <span class="color-text-a"> {{ event.prix }}</span>
+                      </p>
+                      <p>
+                        <strong>Nombre de Participant </strong>
+                        <span class="color-text-a"> {{ event.nbrPrt }}</span>
+                      </p>
+                      <p>
+                        <strong>Nombre de Place disponible </strong>
+                        <span class="color-text-a"> {{ event.nbrPlace }}</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="socials-footer">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    
+                    </ul>
+                  </div>
+                  <button type="button" class="btn btn-success">
+                  <a href="{{ path('reservation_new', {'id': event.id}) }}">
+                  Réserver
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>            
+    </section>
+
+{% endblock %}
